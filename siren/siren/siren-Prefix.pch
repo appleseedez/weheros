@@ -1,0 +1,35 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every
+// source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+// system
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import <libextobjc/EXTScope.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <CocoaAsyncSocket/GCDAsyncSocket.h>
+#import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
+#import <MSWeakTimer/MSWeakTimer.h>
+#import <Reachability/Reachability.h>
+// base
+#import "Constants.h"
+#import "IFAConnection.h"
+#import "IFACore.h"
+#import "IFAEngine.h"
+#import "IFARequest.h"
+#import "IFAResponse.h"
+// app
+#define AppDelegate                                                            \
+  ((FAAppDelegate *)[[UIApplication sharedApplication] delegate])
+#endif

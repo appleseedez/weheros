@@ -1,0 +1,1022 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		924AD9960233422CAACACE7F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5A097F1C7D423496EE3AE5 /* libPods.a */; };
+		94F1BFAB636C482695C24D3E /* libPods-sirenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825B3001AF941078AECBD91 /* libPods-sirenTests.a */; };
+		BA10BFED18DA6F8B0006C57F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFEC18DA6F8B0006C57F /* Foundation.framework */; };
+		BA10BFEF18DA6F8B0006C57F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFEE18DA6F8B0006C57F /* CoreGraphics.framework */; };
+		BA10BFF118DA6F8B0006C57F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFF018DA6F8B0006C57F /* UIKit.framework */; };
+		BA10BFF318DA6F8B0006C57F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFF218DA6F8B0006C57F /* CoreData.framework */; };
+		BA10BFF918DA6F8B0006C57F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA10BFF718DA6F8B0006C57F /* InfoPlist.strings */; };
+		BA10BFFB18DA6F8B0006C57F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA10BFFA18DA6F8B0006C57F /* main.m */; };
+		BA10BFFF18DA6F8B0006C57F /* FAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA10BFFE18DA6F8B0006C57F /* FAAppDelegate.m */; };
+		BA10C00218DA6F8B0006C57F /* siren.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA10C00018DA6F8B0006C57F /* siren.xcdatamodeld */; };
+		BA10C00418DA6F8B0006C57F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA10C00318DA6F8B0006C57F /* Images.xcassets */; };
+		BA10C00B18DA6F8B0006C57F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10C00A18DA6F8B0006C57F /* XCTest.framework */; };
+		BA10C00C18DA6F8B0006C57F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFEC18DA6F8B0006C57F /* Foundation.framework */; };
+		BA10C00D18DA6F8B0006C57F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFF018DA6F8B0006C57F /* UIKit.framework */; };
+		BA10C00E18DA6F8B0006C57F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFF218DA6F8B0006C57F /* CoreData.framework */; };
+		BA10C01618DA6F8B0006C57F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA10C01418DA6F8B0006C57F /* InfoPlist.strings */; };
+		BA10C02E18DD34840006C57F /* IMTCPConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BA10C02D18DD34840006C57F /* IMTCPConnectionSpec.m */; };
+		BA514AE618E0326500DFE10D /* IMCoreVMSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BA514AE518E0326500DFE10D /* IMCoreVMSpec.m */; };
+		BA73948C18FFBD4B002764A2 /* libweheroSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE5E818FE3119007513B4 /* libweheroSDK.a */; };
+		BA73949418FFBE50002764A2 /* weheroSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA73949218FFBE50002764A2 /* weheroSDK.mm */; };
+		BA73949518FFBE50002764A2 /* libAVInterface.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA73949318FFBE50002764A2 /* libAVInterface.a */; };
+		BA95200418F287C50028FE24 /* FAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95200318F287C50028FE24 /* FAModel.m */; };
+		BA95200718F287DB0028FE24 /* FAViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95200618F287DB0028FE24 /* FAViewModel.m */; };
+		BA95200B18F288640028FE24 /* FAEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA95200A18F288640028FE24 /* FAEngine.mm */; };
+		BA95200E18F2892B0028FE24 /* FATCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95200D18F2892B0028FE24 /* FATCPConnection.m */; };
+		BA95201218F28B6A0028FE24 /* FACore.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95201118F28B6A0028FE24 /* FACore.m */; };
+		BA95201518F28D4A0028FE24 /* FARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95201418F28D4A0028FE24 /* FARequest.m */; };
+		BA95201A18F299400028FE24 /* FAConnectionReq.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95201918F299400028FE24 /* FAConnectionReq.m */; };
+		BA95201B18F2999D0028FE24 /* FAConnectionReq.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95201918F299400028FE24 /* FAConnectionReq.m */; };
+		BA95201E18F2A2D20028FE24 /* FAGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95201D18F2A2D20028FE24 /* FAGateway.m */; };
+		BA95201F18F2A2D20028FE24 /* FAGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95201D18F2A2D20028FE24 /* FAGateway.m */; };
+		BA95202218F3A05F0028FE24 /* FAReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95202118F3A05F0028FE24 /* FAReachability.m */; };
+		BA95202318F3A05F0028FE24 /* FAReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95202118F3A05F0028FE24 /* FAReachability.m */; };
+		BA95202A18F3BDBC0028FE24 /* FATCPConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95202918F3BDBC0028FE24 /* FATCPConnectionSpec.m */; };
+		BA95202F18F3BE540028FE24 /* FAReachabilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95202E18F3BE540028FE24 /* FAReachabilitySpec.m */; };
+		BA95203218F3C8A70028FE24 /* FAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95203118F3C8A70028FE24 /* FAToken.m */; };
+		BAB0701A190109D2005E82FF /* FAResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB07019190109D2005E82FF /* FAResponse.m */; };
+		BAB0701D19010AFF005E82FF /* FAControlReq.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB0701C19010AFF005E82FF /* FAControlReq.m */; };
+		BAB0702019010B38005E82FF /* FAControlRes.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB0701F19010B38005E82FF /* FAControlRes.m */; };
+		BACAE5A818FE1EB2007513B4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE5A718FE1EB2007513B4 /* AudioToolbox.framework */; };
+		BACAE5AA18FE1FC8007513B4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE5A918FE1FC8007513B4 /* AVFoundation.framework */; };
+		BACAE5E918FE3119007513B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFEC18DA6F8B0006C57F /* Foundation.framework */; };
+		BACAE61218FE345F007513B4 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE5D818FE2ED3007513B4 /* libstdc++.6.0.9.dylib */; };
+		BACAE61518FE34B2007513B4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE61418FE34B2007513B4 /* CoreImage.framework */; };
+		BACAE61718FE34CA007513B4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE61618FE34CA007513B4 /* CoreMedia.framework */; };
+		BACAE61818FE34D5007513B4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE5A718FE1EB2007513B4 /* AudioToolbox.framework */; };
+		BACAE61A18FE34DE007513B4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE61918FE34DE007513B4 /* CoreAudio.framework */; };
+		BACAE61B18FE34EA007513B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFEE18DA6F8B0006C57F /* CoreGraphics.framework */; };
+		BACAE61C18FE38E1007513B4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE61618FE34CA007513B4 /* CoreMedia.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA10C00F18DA6F8B0006C57F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA10BFE118DA6F8B0006C57F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA10BFE818DA6F8B0006C57F;
+			remoteInfo = siren;
+		};
+		BA73948918FFBCD3002764A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA10BFE118DA6F8B0006C57F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BACAE5E718FE3119007513B4;
+			remoteInfo = weheroSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BACAE5E618FE3119007513B4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2825B3001AF941078AECBD91 /* libPods-sirenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sirenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B5A097F1C7D423496EE3AE5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		70E1EAA8050D49A780AC46F0 /* Pods-sirenTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sirenTests.xcconfig"; path = "Pods/Pods-sirenTests.xcconfig"; sourceTree = "<group>"; };
+		BA10BFE918DA6F8B0006C57F /* siren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = siren.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA10BFEC18DA6F8B0006C57F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BA10BFEE18DA6F8B0006C57F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BA10BFF018DA6F8B0006C57F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BA10BFF218DA6F8B0006C57F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BA10BFF618DA6F8B0006C57F /* siren-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "siren-Info.plist"; sourceTree = "<group>"; };
+		BA10BFF818DA6F8B0006C57F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BA10BFFA18DA6F8B0006C57F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BA10BFFC18DA6F8B0006C57F /* siren-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "siren-Prefix.pch"; sourceTree = "<group>"; };
+		BA10BFFD18DA6F8B0006C57F /* FAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FAAppDelegate.h; sourceTree = "<group>"; };
+		BA10BFFE18DA6F8B0006C57F /* FAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FAAppDelegate.m; sourceTree = "<group>"; };
+		BA10C00118DA6F8B0006C57F /* siren.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = siren.xcdatamodel; sourceTree = "<group>"; };
+		BA10C00318DA6F8B0006C57F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BA10C00918DA6F8B0006C57F /* sirenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sirenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA10C00A18DA6F8B0006C57F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BA10C01318DA6F8B0006C57F /* sirenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sirenTests-Info.plist"; sourceTree = "<group>"; };
+		BA10C01518DA6F8B0006C57F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BA10C02D18DD34840006C57F /* IMTCPConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTCPConnectionSpec.m; sourceTree = "<group>"; };
+		BA514AE518E0326500DFE10D /* IMCoreVMSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMCoreVMSpec.m; sourceTree = "<group>"; };
+		BA73948D18FFBE50002764A2 /* APITypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APITypes.h; sourceTree = "<group>"; };
+		BA73948E18FFBE50002764A2 /* AVInterface.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AVInterface.hh; sourceTree = "<group>"; };
+		BA73948F18FFBE50002764A2 /* NatTypeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NatTypeImpl.h; sourceTree = "<group>"; };
+		BA73949018FFBE50002764A2 /* video_render_ios_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video_render_ios_view.h; sourceTree = "<group>"; };
+		BA73949118FFBE50002764A2 /* weheroSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weheroSDK.h; sourceTree = "<group>"; };
+		BA73949218FFBE50002764A2 /* weheroSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = weheroSDK.mm; sourceTree = "<group>"; };
+		BA73949318FFBE50002764A2 /* libAVInterface.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAVInterface.a; sourceTree = "<group>"; };
+		BA951FFD18F287910028FE24 /* IFAConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFAConnection.h; sourceTree = "<group>"; };
+		BA951FFE18F287910028FE24 /* IFAEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFAEngine.h; sourceTree = "<group>"; };
+		BA951FFF18F287910028FE24 /* IFAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFAResponse.h; sourceTree = "<group>"; };
+		BA95200018F287910028FE24 /* IFARequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFARequest.h; sourceTree = "<group>"; };
+		BA95200118F287910028FE24 /* IFACore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFACore.h; sourceTree = "<group>"; };
+		BA95200218F287C50028FE24 /* FAModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAModel.h; sourceTree = "<group>"; };
+		BA95200318F287C50028FE24 /* FAModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAModel.m; sourceTree = "<group>"; };
+		BA95200518F287DB0028FE24 /* FAViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAViewModel.h; sourceTree = "<group>"; };
+		BA95200618F287DB0028FE24 /* FAViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAViewModel.m; sourceTree = "<group>"; };
+		BA95200918F288640028FE24 /* FAEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAEngine.h; sourceTree = "<group>"; };
+		BA95200A18F288640028FE24 /* FAEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FAEngine.mm; sourceTree = "<group>"; };
+		BA95200C18F2892B0028FE24 /* FATCPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FATCPConnection.h; sourceTree = "<group>"; };
+		BA95200D18F2892B0028FE24 /* FATCPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FATCPConnection.m; sourceTree = "<group>"; };
+		BA95200F18F289F60028FE24 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		BA95201018F28B6A0028FE24 /* FACore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FACore.h; sourceTree = "<group>"; };
+		BA95201118F28B6A0028FE24 /* FACore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FACore.m; sourceTree = "<group>"; };
+		BA95201318F28D4A0028FE24 /* FARequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FARequest.h; sourceTree = "<group>"; };
+		BA95201418F28D4A0028FE24 /* FARequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FARequest.m; sourceTree = "<group>"; };
+		BA95201818F299400028FE24 /* FAConnectionReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAConnectionReq.h; sourceTree = "<group>"; };
+		BA95201918F299400028FE24 /* FAConnectionReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAConnectionReq.m; sourceTree = "<group>"; };
+		BA95201C18F2A2D20028FE24 /* FAGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAGateway.h; sourceTree = "<group>"; };
+		BA95201D18F2A2D20028FE24 /* FAGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAGateway.m; sourceTree = "<group>"; };
+		BA95202018F3A05F0028FE24 /* FAReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAReachability.h; sourceTree = "<group>"; };
+		BA95202118F3A05F0028FE24 /* FAReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAReachability.m; sourceTree = "<group>"; };
+		BA95202918F3BDBC0028FE24 /* FATCPConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FATCPConnectionSpec.m; sourceTree = "<group>"; };
+		BA95202E18F3BE540028FE24 /* FAReachabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAReachabilitySpec.m; sourceTree = "<group>"; };
+		BA95203018F3C8A70028FE24 /* FAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAToken.h; sourceTree = "<group>"; };
+		BA95203118F3C8A70028FE24 /* FAToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAToken.m; sourceTree = "<group>"; };
+		BAB07018190109D2005E82FF /* FAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAResponse.h; sourceTree = "<group>"; };
+		BAB07019190109D2005E82FF /* FAResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAResponse.m; sourceTree = "<group>"; };
+		BAB0701B19010AFF005E82FF /* FAControlReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAControlReq.h; sourceTree = "<group>"; };
+		BAB0701C19010AFF005E82FF /* FAControlReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAControlReq.m; sourceTree = "<group>"; };
+		BAB0701E19010B38005E82FF /* FAControlRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAControlRes.h; sourceTree = "<group>"; };
+		BAB0701F19010B38005E82FF /* FAControlRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAControlRes.m; sourceTree = "<group>"; };
+		BACAE5A618FE1EB1007513B4 /* siren.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = siren.entitlements; sourceTree = "<group>"; };
+		BACAE5A718FE1EB2007513B4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BACAE5A918FE1FC8007513B4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BACAE5D818FE2ED3007513B4 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		BACAE5E818FE3119007513B4 /* libweheroSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libweheroSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BACAE5EC18FE3119007513B4 /* weheroSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weheroSDK-Prefix.pch"; sourceTree = "<group>"; };
+		BACAE61418FE34B2007513B4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		BACAE61618FE34CA007513B4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		BACAE61918FE34DE007513B4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		F00A83230321457381D862A3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA10BFE618DA6F8B0006C57F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA73948C18FFBD4B002764A2 /* libweheroSDK.a in Frameworks */,
+				BACAE61C18FE38E1007513B4 /* CoreMedia.framework in Frameworks */,
+				BACAE61218FE345F007513B4 /* libstdc++.6.0.9.dylib in Frameworks */,
+				BACAE5AA18FE1FC8007513B4 /* AVFoundation.framework in Frameworks */,
+				BA10BFEF18DA6F8B0006C57F /* CoreGraphics.framework in Frameworks */,
+				BA10BFF318DA6F8B0006C57F /* CoreData.framework in Frameworks */,
+				BA10BFF118DA6F8B0006C57F /* UIKit.framework in Frameworks */,
+				BA10BFED18DA6F8B0006C57F /* Foundation.framework in Frameworks */,
+				BACAE5A818FE1EB2007513B4 /* AudioToolbox.framework in Frameworks */,
+				924AD9960233422CAACACE7F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA10C00618DA6F8B0006C57F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA10C00B18DA6F8B0006C57F /* XCTest.framework in Frameworks */,
+				BA10C00E18DA6F8B0006C57F /* CoreData.framework in Frameworks */,
+				BA10C00D18DA6F8B0006C57F /* UIKit.framework in Frameworks */,
+				BA10C00C18DA6F8B0006C57F /* Foundation.framework in Frameworks */,
+				94F1BFAB636C482695C24D3E /* libPods-sirenTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BACAE5E518FE3119007513B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BACAE61B18FE34EA007513B4 /* CoreGraphics.framework in Frameworks */,
+				BACAE61A18FE34DE007513B4 /* CoreAudio.framework in Frameworks */,
+				BACAE61818FE34D5007513B4 /* AudioToolbox.framework in Frameworks */,
+				BACAE61718FE34CA007513B4 /* CoreMedia.framework in Frameworks */,
+				BACAE61518FE34B2007513B4 /* CoreImage.framework in Frameworks */,
+				BA73949518FFBE50002764A2 /* libAVInterface.a in Frameworks */,
+				BACAE5E918FE3119007513B4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA10BFE018DA6F8B0006C57F = {
+			isa = PBXGroup;
+			children = (
+				BA10BFF418DA6F8B0006C57F /* siren */,
+				BA10C01118DA6F8B0006C57F /* sirenTests */,
+				BACAE5EA18FE3119007513B4 /* weheroSDK */,
+				BA10BFEB18DA6F8B0006C57F /* Frameworks */,
+				BA10BFEA18DA6F8B0006C57F /* Products */,
+				F00A83230321457381D862A3 /* Pods.xcconfig */,
+				70E1EAA8050D49A780AC46F0 /* Pods-sirenTests.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		BA10BFEA18DA6F8B0006C57F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA10BFE918DA6F8B0006C57F /* siren.app */,
+				BA10C00918DA6F8B0006C57F /* sirenTests.xctest */,
+				BACAE5E818FE3119007513B4 /* libweheroSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA10BFEB18DA6F8B0006C57F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BACAE61918FE34DE007513B4 /* CoreAudio.framework */,
+				BACAE61618FE34CA007513B4 /* CoreMedia.framework */,
+				BACAE61418FE34B2007513B4 /* CoreImage.framework */,
+				BACAE5D818FE2ED3007513B4 /* libstdc++.6.0.9.dylib */,
+				BACAE5A918FE1FC8007513B4 /* AVFoundation.framework */,
+				BACAE5A718FE1EB2007513B4 /* AudioToolbox.framework */,
+				BA10BFEC18DA6F8B0006C57F /* Foundation.framework */,
+				BA10BFEE18DA6F8B0006C57F /* CoreGraphics.framework */,
+				BA10BFF018DA6F8B0006C57F /* UIKit.framework */,
+				BA10BFF218DA6F8B0006C57F /* CoreData.framework */,
+				BA10C00A18DA6F8B0006C57F /* XCTest.framework */,
+				2B5A097F1C7D423496EE3AE5 /* libPods.a */,
+				2825B3001AF941078AECBD91 /* libPods-sirenTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA10BFF418DA6F8B0006C57F /* siren */ = {
+			isa = PBXGroup;
+			children = (
+				BACAE5A618FE1EB1007513B4 /* siren.entitlements */,
+				BA951FF718F2875F0028FE24 /* base */,
+				BA951FE918F285E00028FE24 /* app */,
+				BA10BFFD18DA6F8B0006C57F /* FAAppDelegate.h */,
+				BA10BFFE18DA6F8B0006C57F /* FAAppDelegate.m */,
+				BA10C00318DA6F8B0006C57F /* Images.xcassets */,
+				BA10C00018DA6F8B0006C57F /* siren.xcdatamodeld */,
+				BA10BFF518DA6F8B0006C57F /* Supporting Files */,
+			);
+			path = siren;
+			sourceTree = "<group>";
+		};
+		BA10BFF518DA6F8B0006C57F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA10BFF618DA6F8B0006C57F /* siren-Info.plist */,
+				BA10BFF718DA6F8B0006C57F /* InfoPlist.strings */,
+				BA10BFFA18DA6F8B0006C57F /* main.m */,
+				BA10BFFC18DA6F8B0006C57F /* siren-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA10C01118DA6F8B0006C57F /* sirenTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA95202418F3BD4D0028FE24 /* app */,
+				BA95202518F3BD4D0028FE24 /* base */,
+				BA10C01218DA6F8B0006C57F /* Supporting Files */,
+				BA10C02D18DD34840006C57F /* IMTCPConnectionSpec.m */,
+				BA514AE518E0326500DFE10D /* IMCoreVMSpec.m */,
+			);
+			path = sirenTests;
+			sourceTree = "<group>";
+		};
+		BA10C01218DA6F8B0006C57F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA10C01318DA6F8B0006C57F /* sirenTests-Info.plist */,
+				BA10C01418DA6F8B0006C57F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA951FE918F285E00028FE24 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				BA95200818F288510028FE24 /* models */,
+				BA951FEA18F285E00028FE24 /* interfaces */,
+				BA951FEC18F285E00028FE24 /* vendors */,
+				BA951FED18F285E00028FE24 /* view_models */,
+				BA951FEE18F285E00028FE24 /* views */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		BA951FEA18F285E00028FE24 /* interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = interfaces;
+			sourceTree = "<group>";
+		};
+		BA951FEC18F285E00028FE24 /* vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = vendors;
+			sourceTree = "<group>";
+		};
+		BA951FED18F285E00028FE24 /* view_models */ = {
+			isa = PBXGroup;
+			children = (
+				BA95201018F28B6A0028FE24 /* FACore.h */,
+				BA95201118F28B6A0028FE24 /* FACore.m */,
+			);
+			path = view_models;
+			sourceTree = "<group>";
+		};
+		BA951FEE18F285E00028FE24 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		BA951FF718F2875F0028FE24 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				BA951FF818F2875F0028FE24 /* interfaces */,
+				BA951FF918F2875F0028FE24 /* models */,
+				BA951FFA18F2875F0028FE24 /* vendors */,
+				BA951FFC18F2875F0028FE24 /* view_models */,
+				BA95200F18F289F60028FE24 /* Constants.h */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		BA951FF818F2875F0028FE24 /* interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				BA951FFD18F287910028FE24 /* IFAConnection.h */,
+				BA951FFE18F287910028FE24 /* IFAEngine.h */,
+				BA951FFF18F287910028FE24 /* IFAResponse.h */,
+				BA95200018F287910028FE24 /* IFARequest.h */,
+				BA95200118F287910028FE24 /* IFACore.h */,
+			);
+			path = interfaces;
+			sourceTree = "<group>";
+		};
+		BA951FF918F2875F0028FE24 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				BA95200218F287C50028FE24 /* FAModel.h */,
+				BA95200318F287C50028FE24 /* FAModel.m */,
+				BA95201318F28D4A0028FE24 /* FARequest.h */,
+				BA95201418F28D4A0028FE24 /* FARequest.m */,
+				BA95201C18F2A2D20028FE24 /* FAGateway.h */,
+				BA95201D18F2A2D20028FE24 /* FAGateway.m */,
+				BA95202018F3A05F0028FE24 /* FAReachability.h */,
+				BA95202118F3A05F0028FE24 /* FAReachability.m */,
+				BA95203018F3C8A70028FE24 /* FAToken.h */,
+				BA95203118F3C8A70028FE24 /* FAToken.m */,
+				BAB07018190109D2005E82FF /* FAResponse.h */,
+				BAB07019190109D2005E82FF /* FAResponse.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		BA951FFA18F2875F0028FE24 /* vendors */ = {
+			isa = PBXGroup;
+			children = (
+				BA951FFB18F2875F0028FE24 /* sdk */,
+			);
+			path = vendors;
+			sourceTree = "<group>";
+		};
+		BA951FFB18F2875F0028FE24 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
+		BA951FFC18F2875F0028FE24 /* view_models */ = {
+			isa = PBXGroup;
+			children = (
+				BA95200518F287DB0028FE24 /* FAViewModel.h */,
+				BA95200618F287DB0028FE24 /* FAViewModel.m */,
+			);
+			path = view_models;
+			sourceTree = "<group>";
+		};
+		BA95200818F288510028FE24 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				BA95200918F288640028FE24 /* FAEngine.h */,
+				BA95200A18F288640028FE24 /* FAEngine.mm */,
+				BA95200C18F2892B0028FE24 /* FATCPConnection.h */,
+				BA95200D18F2892B0028FE24 /* FATCPConnection.m */,
+				BA95201818F299400028FE24 /* FAConnectionReq.h */,
+				BA95201918F299400028FE24 /* FAConnectionReq.m */,
+				BAB0701B19010AFF005E82FF /* FAControlReq.h */,
+				BAB0701C19010AFF005E82FF /* FAControlReq.m */,
+				BAB0701E19010B38005E82FF /* FAControlRes.h */,
+				BAB0701F19010B38005E82FF /* FAControlRes.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		BA95202418F3BD4D0028FE24 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				BA95202D18F3BDFD0028FE24 /* view_models */,
+				BA95202818F3BDA60028FE24 /* models */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		BA95202518F3BD4D0028FE24 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				BA95202B18F3BDF50028FE24 /* view_models */,
+				BA95202C18F3BDF50028FE24 /* models */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		BA95202818F3BDA60028FE24 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				BA95202918F3BDBC0028FE24 /* FATCPConnectionSpec.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		BA95202B18F3BDF50028FE24 /* view_models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view_models;
+			sourceTree = "<group>";
+		};
+		BA95202C18F3BDF50028FE24 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				BA95202E18F3BE540028FE24 /* FAReachabilitySpec.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		BA95202D18F3BDFD0028FE24 /* view_models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view_models;
+			sourceTree = "<group>";
+		};
+		BACAE5EA18FE3119007513B4 /* weheroSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BA73948D18FFBE50002764A2 /* APITypes.h */,
+				BA73948E18FFBE50002764A2 /* AVInterface.hh */,
+				BA73948F18FFBE50002764A2 /* NatTypeImpl.h */,
+				BA73949018FFBE50002764A2 /* video_render_ios_view.h */,
+				BA73949118FFBE50002764A2 /* weheroSDK.h */,
+				BA73949218FFBE50002764A2 /* weheroSDK.mm */,
+				BA73949318FFBE50002764A2 /* libAVInterface.a */,
+				BACAE5EB18FE3119007513B4 /* Supporting Files */,
+			);
+			path = weheroSDK;
+			sourceTree = "<group>";
+		};
+		BACAE5EB18FE3119007513B4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BACAE5EC18FE3119007513B4 /* weheroSDK-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA10BFE818DA6F8B0006C57F /* siren */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA10C01B18DA6F8B0006C57F /* Build configuration list for PBXNativeTarget "siren" */;
+			buildPhases = (
+				1043F0C556794AF7B361956E /* Check Pods Manifest.lock */,
+				BA10BFE518DA6F8B0006C57F /* Sources */,
+				BA10BFE618DA6F8B0006C57F /* Frameworks */,
+				BA10BFE718DA6F8B0006C57F /* Resources */,
+				D4427E675FA64816A6212574 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA73948A18FFBCD3002764A2 /* PBXTargetDependency */,
+			);
+			name = siren;
+			productName = siren;
+			productReference = BA10BFE918DA6F8B0006C57F /* siren.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA10C00818DA6F8B0006C57F /* sirenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA10C01E18DA6F8B0006C57F /* Build configuration list for PBXNativeTarget "sirenTests" */;
+			buildPhases = (
+				31A7C7DC4D6842FDBADDA1D1 /* Check Pods Manifest.lock */,
+				BA10C00518DA6F8B0006C57F /* Sources */,
+				BA10C00618DA6F8B0006C57F /* Frameworks */,
+				BA10C00718DA6F8B0006C57F /* Resources */,
+				1F4155E6EA2743D1B24390B5 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA10C01018DA6F8B0006C57F /* PBXTargetDependency */,
+			);
+			name = sirenTests;
+			productName = sirenTests;
+			productReference = BA10C00918DA6F8B0006C57F /* sirenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BACAE5E718FE3119007513B4 /* weheroSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BACAE60418FE311A007513B4 /* Build configuration list for PBXNativeTarget "weheroSDK" */;
+			buildPhases = (
+				BACAE5E418FE3119007513B4 /* Sources */,
+				BACAE5E518FE3119007513B4 /* Frameworks */,
+				BACAE5E618FE3119007513B4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = weheroSDK;
+			productName = weheroSDK;
+			productReference = BACAE5E818FE3119007513B4 /* libweheroSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA10BFE118DA6F8B0006C57F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FA;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = weheros;
+				TargetAttributes = {
+					BA10BFE818DA6F8B0006C57F = {
+						DevelopmentTeam = KAH6228XJ2;
+					};
+					BA10C00818DA6F8B0006C57F = {
+						TestTargetID = BA10BFE818DA6F8B0006C57F;
+					};
+				};
+			};
+			buildConfigurationList = BA10BFE418DA6F8B0006C57F /* Build configuration list for PBXProject "siren" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BA10BFE018DA6F8B0006C57F;
+			productRefGroup = BA10BFEA18DA6F8B0006C57F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA10BFE818DA6F8B0006C57F /* siren */,
+				BA10C00818DA6F8B0006C57F /* sirenTests */,
+				BACAE5E718FE3119007513B4 /* weheroSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA10BFE718DA6F8B0006C57F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA10BFF918DA6F8B0006C57F /* InfoPlist.strings in Resources */,
+				BA10C00418DA6F8B0006C57F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA10C00718DA6F8B0006C57F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA10C01618DA6F8B0006C57F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1043F0C556794AF7B361956E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1F4155E6EA2743D1B24390B5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-sirenTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31A7C7DC4D6842FDBADDA1D1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D4427E675FA64816A6212574 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA10BFE518DA6F8B0006C57F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA95200418F287C50028FE24 /* FAModel.m in Sources */,
+				BA10BFFF18DA6F8B0006C57F /* FAAppDelegate.m in Sources */,
+				BA95201518F28D4A0028FE24 /* FARequest.m in Sources */,
+				BAB0701D19010AFF005E82FF /* FAControlReq.m in Sources */,
+				BA95203218F3C8A70028FE24 /* FAToken.m in Sources */,
+				BA95200B18F288640028FE24 /* FAEngine.mm in Sources */,
+				BA95201218F28B6A0028FE24 /* FACore.m in Sources */,
+				BA95202218F3A05F0028FE24 /* FAReachability.m in Sources */,
+				BA95201A18F299400028FE24 /* FAConnectionReq.m in Sources */,
+				BA95200E18F2892B0028FE24 /* FATCPConnection.m in Sources */,
+				BAB0701A190109D2005E82FF /* FAResponse.m in Sources */,
+				BAB0702019010B38005E82FF /* FAControlRes.m in Sources */,
+				BA95200718F287DB0028FE24 /* FAViewModel.m in Sources */,
+				BA10C00218DA6F8B0006C57F /* siren.xcdatamodeld in Sources */,
+				BA95201E18F2A2D20028FE24 /* FAGateway.m in Sources */,
+				BA10BFFB18DA6F8B0006C57F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA10C00518DA6F8B0006C57F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA95202F18F3BE540028FE24 /* FAReachabilitySpec.m in Sources */,
+				BA10C02E18DD34840006C57F /* IMTCPConnectionSpec.m in Sources */,
+				BA514AE618E0326500DFE10D /* IMCoreVMSpec.m in Sources */,
+				BA95201F18F2A2D20028FE24 /* FAGateway.m in Sources */,
+				BA95201B18F2999D0028FE24 /* FAConnectionReq.m in Sources */,
+				BA95202318F3A05F0028FE24 /* FAReachability.m in Sources */,
+				BA95202A18F3BDBC0028FE24 /* FATCPConnectionSpec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BACAE5E418FE3119007513B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA73949418FFBE50002764A2 /* weheroSDK.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA10C01018DA6F8B0006C57F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA10BFE818DA6F8B0006C57F /* siren */;
+			targetProxy = BA10C00F18DA6F8B0006C57F /* PBXContainerItemProxy */;
+		};
+		BA73948A18FFBCD3002764A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BACAE5E718FE3119007513B4 /* weheroSDK */;
+			targetProxy = BA73948918FFBCD3002764A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA10BFF718DA6F8B0006C57F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA10BFF818DA6F8B0006C57F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BA10C01418DA6F8B0006C57F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA10C01518DA6F8B0006C57F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA10C01918DA6F8B0006C57F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA10C01A18DA6F8B0006C57F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA10C01C18DA6F8B0006C57F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F00A83230321457381D862A3 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = siren/siren.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "siren/siren-Prefix.pch";
+				INFOPLIST_FILE = "siren/siren-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
+				VALID_ARCHS = "armv7 arm64 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BA10C01D18DA6F8B0006C57F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F00A83230321457381D862A3 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = siren/siren.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "siren/siren-Prefix.pch";
+				INFOPLIST_FILE = "siren/siren-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
+				VALID_ARCHS = "armv7 arm64 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BA10C01F18DA6F8B0006C57F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70E1EAA8050D49A780AC46F0 /* Pods-sirenTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/siren.app/siren";
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "siren/siren-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "sirenTests/sirenTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BA10C02018DA6F8B0006C57F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70E1EAA8050D49A780AC46F0 /* Pods-sirenTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/siren.app/siren";
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "siren/siren-Prefix.pch";
+				INFOPLIST_FILE = "sirenTests/sirenTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		BACAE60518FE311A007513B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				DSTROOT = /tmp/weheroSDK.dst;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weheroSDK/weheroSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/weheroSDK",
+				);
+				OTHER_LDFLAGS = "-static";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BACAE60618FE311A007513B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				DSTROOT = /tmp/weheroSDK.dst;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weheroSDK/weheroSDK-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/weheroSDK",
+				);
+				OTHER_LDFLAGS = "-static";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA10BFE418DA6F8B0006C57F /* Build configuration list for PBXProject "siren" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA10C01918DA6F8B0006C57F /* Debug */,
+				BA10C01A18DA6F8B0006C57F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA10C01B18DA6F8B0006C57F /* Build configuration list for PBXNativeTarget "siren" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA10C01C18DA6F8B0006C57F /* Debug */,
+				BA10C01D18DA6F8B0006C57F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA10C01E18DA6F8B0006C57F /* Build configuration list for PBXNativeTarget "sirenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA10C01F18DA6F8B0006C57F /* Debug */,
+				BA10C02018DA6F8B0006C57F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BACAE60418FE311A007513B4 /* Build configuration list for PBXNativeTarget "weheroSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BACAE60518FE311A007513B4 /* Debug */,
+				BACAE60618FE311A007513B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BA10C00018DA6F8B0006C57F /* siren.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA10C00118DA6F8B0006C57F /* siren.xcdatamodel */,
+			);
+			currentVersion = BA10C00118DA6F8B0006C57F /* siren.xcdatamodel */;
+			path = siren.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BA10BFE118DA6F8B0006C57F /* Project object */;
+}
