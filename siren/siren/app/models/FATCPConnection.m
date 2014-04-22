@@ -20,6 +20,13 @@
 @end
 
 @implementation FATCPConnection
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    self.status = @(FAConnectionStatusDisconnected);
+  }
+  return self;
+}
 - (BOOL)connect {
   if (self.request == nil) {
     return NO;

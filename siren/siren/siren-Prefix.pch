@@ -15,6 +15,7 @@
 // system
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import <CoreData/CoreData.h>
 #import <libextobjc/EXTScope.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -33,3 +34,5 @@
 #define AppDelegate                                                            \
   ((FAAppDelegate *)[[UIApplication sharedApplication] delegate])
 #endif
+// test
+#define HAS_NET 0 // when develop at a place without network connection

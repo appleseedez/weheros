@@ -10,4 +10,6 @@
 
 @interface FAModel : NSObject
 + (NSDictionary *)data2Dic:(NSData *)data;
++ (NSString *)getIpLocally:(NSString *)networkInterface
+                 ipVersion:(int)ipVersion;
 @end

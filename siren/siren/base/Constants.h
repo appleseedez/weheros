@@ -9,4 +9,7 @@
 #ifndef siren_Constants_h
 #define siren_Constants_h
 #define ReachabilityHost @"www.baidu.com"
+#define LocalBasePort 11111
+#define kNetInterfaceWIFI @"kNetInterfaceWIFI"
+#define kNetInterfaceCellular @"kNetInterfaceCellular"
 #endif
