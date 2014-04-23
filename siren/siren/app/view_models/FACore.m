@@ -32,55 +32,73 @@
 
 - (void)dealloc {
   // when the core is tear down, dispose the subscription.
-  [self.tcpDataSubscription dispose];
-  [self.tcpConnectionStatusSubscription dispose];
-  [self.engineSubscription dispose];
+  [self dispose];
 }
 
 #pragma mark - logic
 
 - (void)setupTCPDataSubscription {
     RACSignal *tcpSignal =
-    [RACObserve(self.tcpConnection, response) map:^id(id<IFAResponse> res) {
-      return [res body];
+    [[RACObserve(self.tcpConnection, response) filter:^BOOL(id value) {
+      return nil != value;
+    } ] map:^id(id<IFAResponse> res) {
+      NSDictionary *resData = [[res body] valueForKey:@"payload"];
+      // data process here.
+      // put the logic in the map block instead of subscribNext will get rid of
+      // the self cycle problem.
+      [self routeFromData:resData];
+      return resData;
     }];
     self.tcpDataSubscription =
     [tcpSignal subscribeNext:^(NSDictionary * payload) {
+      // subscribeNext nee no logic just for debug.
       NSLog(@"recevied payload :%@", payload);
     }];
 }
-
+/**
+ combine signal to determine whether reconnect is needed.
+ 1. reachability is false then no need to do reconnect. maybe just tip the
+ user.
+ 2.otherwise reconnect is needed. because this signal indecates that
+ network has changed but still reachable(reachStatus signal),or socket
+ just been disconnected (tcpConnection signal).
+ **/
 - (void)setupTCPConnectionStatusSubscription {
-  // combine signal to determine whether reconnect is needed.
   RACSignal *tcpConnectionStatusSignal =
-    [RACSignal combineLatest:@[
-                               RACObserve(self.tcpConnection, status),
-                               RACObserve(self.reach, reachStatus)
-                               ]
-                      reduce:^id(NSNumber* connectionStatus,NSNumber* reachabilityStatus){
-    // 1. reachability is false then no need to do reconnect. maybe just tip the
-    // user.
-    // 2.otherwise reconnect is needed. because this signal indecates that
-    // network has changed but still reachable(reachStatus signal),or socket
-    // just been disconnected (tcpConnection signal).
-    if (![reachabilityStatus boolValue]) {
-      return @(FAConnectionActionFlagNotConnected);
-    } else {
-      return @(FAConnectionActionFlagNeedReconnect);
-    }
-  }];
+    [[RACSignal combineLatest:@[ RACObserve(self.tcpConnection, status), RACObserve(self.reach, reachStatus)] reduce:^id(NSNumber* connectionStatus,NSNumber* reachabilityStatus){
 
-  @weakify(self);
-  self.tcpConnectionStatusSubscription =
-      [tcpConnectionStatusSignal subscribeNext:^(NSNumber * stat) {
-    @strongify(self);
+    NSLog(@"what is the reduce :%@,%@", connectionStatus, reachabilityStatus);
+    if (![reachabilityStatus boolValue]) {
+      return @(FAConnectionActionFlagNotReachable);
+    } else if ([connectionStatus integerValue] ==
+               FAConnectionStatusDisconnected) {
+      return @(FAConnectionActionFlagNeedReconnect);
+    } else {
+      return @(FAConnectionActionFlagDoNothing);
+    }
+  }] map:^id(NSNumber* stat) {
     if ([stat integerValue] == FAConnectionActionFlagNeedReconnect) {
+      NSLog(@"not connect,be able to connect to server");
       [self.tcpConnection reconnect];
+    } else if ([stat integerValue] == FAConnectionActionFlagDoNothing) {
+      NSLog(@"still connected. Nothing to do!");
     } else {
       // TODO: tip the user
       NSLog(@"TIP:Current Network is not reachable. Please check.");
+      [self.tcpConnection disconnect];
     }
-  }];
+    return stat;
+  }] ;
+    self.tcpConnectionStatusSubscription = [tcpConnectionStatusSignal
+        subscribeNext:^(NSNumber *
+                        stat) {
+      NSLog(@"get the tcp connect status code "
+             "{FAConnectionActionFlagNeedReconnect:1,"
+             "FAConnectionActionFlagDoNothing:0"
+             "FAConnectionActionFlagNotConnected:-1} "
+             "value is :%@",
+            stat);
+    }];
 }
 
 - (void)setupEngineSubscription {
@@ -91,10 +109,22 @@
                                }];
 }
 
+- (void)routeFromData:(NSDictionary *)data {
+}
+
+- (void)dispose {
+  // when the core is tear down, dispose the subscription.
+  [self.tcpDataSubscription dispose];
+  [self.tcpConnectionStatusSubscription dispose];
+  [self.engineSubscription dispose];
+  [self.tcpConnection disconnect];
+}
 #pragma mark - accessors
 @synthesize reach = _reach;
 - (FAReachability *)reach {
-  _reach = [FAReachability shared];
+  if (nil == _reach) {
+    _reach = [FAReachability shared];
+  }
   return _reach;
 }
 

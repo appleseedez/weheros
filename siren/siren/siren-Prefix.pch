@@ -25,6 +25,7 @@
 #import <Reachability/Reachability.h>
 // base
 #import "Constants.h"
+#import "FASeqGen.h"
 #import "IFAConnection.h"
 #import "IFACore.h"
 #import "IFAEngine.h"
@@ -35,4 +36,4 @@
   ((FAAppDelegate *)[[UIApplication sharedApplication] delegate])
 #endif
 // test
-#define HAS_NET 0 // when develop at a place without network connection
+#define HAS_NET 1 // when develop at a place without network connection

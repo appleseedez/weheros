@@ -7,7 +7,7 @@
 //
 
 #import "FAAppDelegate.h"
-#import "FAReachability.h"
+#import "FAMainViewController.h"
 @implementation FAAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -18,8 +18,10 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
-  self.window.backgroundColor = [UIColor whiteColor];
+  self.window.backgroundColor = [UIColor blackColor];
+  self.window.rootViewController = [FAMainViewController new];
   [self.window makeKeyAndVisible];
+
   return YES;
 }
 

@@ -17,6 +17,8 @@
 @property(nonatomic) GCDAsyncSocket *sock;
 @property(nonatomic)
     dispatch_queue_t sockControlQ; // socket operation is put off main queue.
+@property(nonatomic) MSWeakTimer *tcpHeartBeatTimer;
+@property(nonatomic) dispatch_queue_t tcpHeartBeatQ;
 @end
 
 @implementation FATCPConnection
@@ -46,7 +48,16 @@
   return [self connect];
 }
 - (void)disconnect {
-  [self.sock disconnectAfterReadingAndWriting];
+  [self.sock disconnect];
+}
+
+- (BOOL)reconnect {
+  NSLog(@"=========================Reconnect");
+  FAConnectionReq *connectRequest = [FAConnectionReq new];
+  connectRequest.gateway =
+      [FAGateway gatewayWithHost:@"112.124.110.206" port:1337];
+  [self connectWithRequest:connectRequest];
+  return YES;
 }
 #pragma mark - socket delegate
 // connected to host
@@ -56,6 +67,7 @@
   self.status = @(FAConnectionStatusConnected);
   // get ready to read from socket
   [sock readDataToLength:sizeof(uint16_t) withTimeout:-1 tag:HEAD_PART];
+  // send the heart beat to keep the tcp alive.
 }
 // did disconnected to host
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
@@ -104,7 +116,7 @@
     FAControlRes *res = [FAControlRes new];
     res.binPayLoad = data;
     // this will trigger the kvo;
-    self.response = res;
+    dispatch_async(dispatch_get_main_queue(), ^{ self.response = res; });
     break;
   }
 
@@ -118,6 +130,15 @@
   const NSString *queueTag = @"com.weheros.tcpsocketqueue";
   if (_sockControlQ == nil) {
     _sockControlQ =
+        dispatch_queue_create([queueTag UTF8String], DISPATCH_QUEUE_SERIAL);
+  }
+  return _sockControlQ;
+}
+@synthesize tcpHeartBeatQ = _tcpHeartBeatQ;
+- (dispatch_queue_t)tcpHeartBeatQ {
+  const NSString *queueTag = @"com.weheros.tcpHeartBeatQueue";
+  if (_tcpHeartBeatQ == nil) {
+    _tcpHeartBeatQ  =
         dispatch_queue_create([queueTag UTF8String], DISPATCH_QUEUE_SERIAL);
   }
   return _sockControlQ;

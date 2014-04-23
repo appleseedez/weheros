@@ -14,6 +14,7 @@ UIView *_pview_local;
 // current inter IP
 @property(nonatomic, copy) NSString *myCurrentInterIP;
 @property(nonatomic) NSUInteger myLocalPort;
+@property(nonatomic) dispatch_queue_t p2pQueue;
 @end
 @implementation FAEngine
 #pragma mark - engine life
@@ -108,6 +109,15 @@ UIView *_pview_local;
   return _api;
 }
 
+@synthesize p2pQueue = _p2pQueue;
+- (dispatch_queue_t)p2pQueue {
+  const NSString *p2pQueueTag = @"com.weheros.p2pQueue";
+  if (nil == _p2pQueue) {
+    _p2pQueue =
+        dispatch_queue_create([p2pQueueTag UTF8String], DISPATCH_QUEUE_SERIAL);
+  }
+  return _p2pQueue;
+}
 // this section is for the test. because the C++ class could not expose to the
 // header. #sharedAPI only can be a private method. so for the testing,i have to
 // tweak it.

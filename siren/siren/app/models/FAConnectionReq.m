@@ -13,8 +13,8 @@
   return @{
     @"token" : self.token,
     @"type" : self.signalType,
-    @"status" : self.status,
-    @"seq" : @(1)
+    @"status" : @(0),
+    @"seq" : @([FASeqGen seq])
   };
 }
 

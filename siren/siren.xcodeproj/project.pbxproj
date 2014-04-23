@@ -23,6 +23,7 @@
 		BA10C00D18DA6F8B0006C57F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFF018DA6F8B0006C57F /* UIKit.framework */; };
 		BA10C00E18DA6F8B0006C57F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFF218DA6F8B0006C57F /* CoreData.framework */; };
 		BA10C01618DA6F8B0006C57F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA10C01418DA6F8B0006C57F /* InfoPlist.strings */; };
+		BA15ABAE1907893C0048DC5B /* FAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA15ABAD1907893C0048DC5B /* FAMainViewController.m */; };
 		BA73948C18FFBD4B002764A2 /* libweheroSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE5E818FE3119007513B4 /* libweheroSDK.a */; };
 		BA73949418FFBE50002764A2 /* weheroSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA73949218FFBE50002764A2 /* weheroSDK.mm */; };
 		BA73949518FFBE50002764A2 /* libAVInterface.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA73949318FFBE50002764A2 /* libAVInterface.a */; };
@@ -41,6 +42,7 @@
 		BA95202A18F3BDBC0028FE24 /* FATCPConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95202918F3BDBC0028FE24 /* FATCPConnectionSpec.m */; };
 		BA95202F18F3BE540028FE24 /* FAReachabilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95202E18F3BE540028FE24 /* FAReachabilitySpec.m */; };
 		BA95203218F3C8A70028FE24 /* FAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95203118F3C8A70028FE24 /* FAToken.m */; };
+		BAA022581907B9D5007A2E7B /* FASeqGen.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA022571907B9D5007A2E7B /* FASeqGen.m */; };
 		BAB0701A190109D2005E82FF /* FAResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB07019190109D2005E82FF /* FAResponse.m */; };
 		BAB0701D19010AFF005E82FF /* FAControlReq.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB0701C19010AFF005E82FF /* FAControlReq.m */; };
 		BAB0702019010B38005E82FF /* FAControlRes.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB0701F19010B38005E82FF /* FAControlRes.m */; };
@@ -54,6 +56,7 @@
 		BACAE61A18FE34DE007513B4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE61918FE34DE007513B4 /* CoreAudio.framework */; };
 		BACAE61B18FE34EA007513B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA10BFEE18DA6F8B0006C57F /* CoreGraphics.framework */; };
 		BACAE61C18FE38E1007513B4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE61618FE34CA007513B4 /* CoreMedia.framework */; };
+		BAE7B3641907518500B0FD97 /* FACoreSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE7B3631907518500B0FD97 /* FACoreSpec.m */; };
 		BAEC1DFD190379860011EDA8 /* FAEngineSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC1DFC190379860011EDA8 /* FAEngineSpec.m */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +110,8 @@
 		BA10C00A18DA6F8B0006C57F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BA10C01318DA6F8B0006C57F /* sirenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sirenTests-Info.plist"; sourceTree = "<group>"; };
 		BA10C01518DA6F8B0006C57F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BA15ABAC1907893C0048DC5B /* FAMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAMainViewController.h; sourceTree = "<group>"; };
+		BA15ABAD1907893C0048DC5B /* FAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAMainViewController.m; sourceTree = "<group>"; };
 		BA73948D18FFBE50002764A2 /* APITypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APITypes.h; sourceTree = "<group>"; };
 		BA73948E18FFBE50002764A2 /* AVInterface.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AVInterface.hh; sourceTree = "<group>"; };
 		BA73948F18FFBE50002764A2 /* NatTypeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NatTypeImpl.h; sourceTree = "<group>"; };
@@ -142,6 +147,8 @@
 		BA95202E18F3BE540028FE24 /* FAReachabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAReachabilitySpec.m; sourceTree = "<group>"; };
 		BA95203018F3C8A70028FE24 /* FAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAToken.h; sourceTree = "<group>"; };
 		BA95203118F3C8A70028FE24 /* FAToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAToken.m; sourceTree = "<group>"; };
+		BAA022561907B9D5007A2E7B /* FASeqGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FASeqGen.h; sourceTree = "<group>"; };
+		BAA022571907B9D5007A2E7B /* FASeqGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FASeqGen.m; sourceTree = "<group>"; };
 		BAB07018190109D2005E82FF /* FAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAResponse.h; sourceTree = "<group>"; };
 		BAB07019190109D2005E82FF /* FAResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAResponse.m; sourceTree = "<group>"; };
 		BAB0701B19010AFF005E82FF /* FAControlReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAControlReq.h; sourceTree = "<group>"; };
@@ -157,6 +164,7 @@
 		BACAE61418FE34B2007513B4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		BACAE61618FE34CA007513B4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		BACAE61918FE34DE007513B4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		BAE7B3631907518500B0FD97 /* FACoreSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FACoreSpec.m; sourceTree = "<group>"; };
 		BAEC1DFC190379860011EDA8 /* FAEngineSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAEngineSpec.m; sourceTree = "<group>"; };
 		F00A83230321457381D862A3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -334,6 +342,8 @@
 		BA951FEE18F285E00028FE24 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				BA15ABAC1907893C0048DC5B /* FAMainViewController.h */,
+				BA15ABAD1907893C0048DC5B /* FAMainViewController.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -377,6 +387,8 @@
 				BA95203118F3C8A70028FE24 /* FAToken.m */,
 				BAB07018190109D2005E82FF /* FAResponse.h */,
 				BAB07019190109D2005E82FF /* FAResponse.m */,
+				BAA022561907B9D5007A2E7B /* FASeqGen.h */,
+				BAA022571907B9D5007A2E7B /* FASeqGen.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -467,6 +479,7 @@
 		BA95202D18F3BDFD0028FE24 /* view_models */ = {
 			isa = PBXGroup;
 			children = (
+				BAE7B3631907518500B0FD97 /* FACoreSpec.m */,
 			);
 			path = view_models;
 			sourceTree = "<group>";
@@ -692,8 +705,10 @@
 				BAB0701A190109D2005E82FF /* FAResponse.m in Sources */,
 				BAB0702019010B38005E82FF /* FAControlRes.m in Sources */,
 				BA95200718F287DB0028FE24 /* FAViewModel.m in Sources */,
+				BAA022581907B9D5007A2E7B /* FASeqGen.m in Sources */,
 				BA10C00218DA6F8B0006C57F /* siren.xcdatamodeld in Sources */,
 				BA95201E18F2A2D20028FE24 /* FAGateway.m in Sources */,
+				BA15ABAE1907893C0048DC5B /* FAMainViewController.m in Sources */,
 				BA10BFFB18DA6F8B0006C57F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,6 +718,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA95202F18F3BE540028FE24 /* FAReachabilitySpec.m in Sources */,
+				BAE7B3641907518500B0FD97 /* FACoreSpec.m in Sources */,
 				BAEC1DFD190379860011EDA8 /* FAEngineSpec.m in Sources */,
 				BA95201F18F2A2D20028FE24 /* FAGateway.m in Sources */,
 				BA95201B18F2999D0028FE24 /* FAConnectionReq.m in Sources */,

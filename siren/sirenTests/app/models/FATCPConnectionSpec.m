@@ -27,17 +27,16 @@ describe(@"FATCPConnection", ^{
     });
 #else
     it(@"should not connected to that endpoint", ^{
-        FATCPConnection *tcpConnection = [FATCPConnection new];
-        FAConnectionReq *connectRequest = [FAConnectionReq new];
-        connectRequest.gateway =
-        [FAGateway gatewayWithHost:@"112.124.110.206" port:1337];
-        [tcpConnection connectWithRequest:connectRequest];
-        sleep(3);
-        [[theValue([[tcpConnection status] integerValue]) should]
-         equal:theValue(FAConnectionStatusDisconnected)];
-    
+      FATCPConnection *tcpConnection = [FATCPConnection new];
+      FAConnectionReq *connectRequest = [FAConnectionReq new];
+      connectRequest.gateway =
+          [FAGateway gatewayWithHost:@"112.124.110.206" port:1337];
+      [tcpConnection connectWithRequest:connectRequest];
+      sleep(3);
+      [[theValue([[tcpConnection status] integerValue]) should]
+          equal:theValue(FAConnectionStatusDisconnected)];
     });
-#endif
+         #endif
   });
 });
 

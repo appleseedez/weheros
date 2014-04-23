@@ -7,39 +7,38 @@
 //
 
 #import "FAReachability.h"
-static FAReachability *_instance;
 @interface FAReachability ()
 @property(nonatomic) Reachability *reach;
 @end
 
 @implementation FAReachability
-+ (void)initialize {
-  if (self == [FAReachability class]) {
-    _instance = [FAReachability new];
-  }
-}
 
 + (instancetype)shared {
+  static FAReachability *_instance = nil;
+  static dispatch_once_t onceTokenReachability;
+  dispatch_once(&onceTokenReachability, ^{ _instance = [FAReachability new]; });
   return _instance;
 }
 
 - (instancetype)init {
   self = [super init];
   if (self) {
+    self.reachStatus = @(NO);
     NSString *host = ReachabilityHost;
     self.reach = [Reachability reachabilityWithHostname:host];
     // The model update its property by observe the Notification of Reachability
     // object.
     RAC(self, reachStatus,
-        @(0)) = [[[[NSNotificationCenter defaultCenter]
+        @(NO)) = [[[[NSNotificationCenter defaultCenter]
                       rac_addObserverForName:kReachabilityChangedNotification
                                       object:nil]
-                     takeUntil:[self rac_willDeallocSignal]]
+                     takeUntil:[self rac_willDeallocSignal]] 
         map:^id(NSNotification * note) {
       // i dont care if this connection is Wifi or WLan.
       Reachability *result = (Reachability *)note.object;
       return @([result isReachable]);
     }];
+
     [self startMonitor];
   }
   return self;
