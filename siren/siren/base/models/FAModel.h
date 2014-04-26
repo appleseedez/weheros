@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSData+Byte.h"
 typedef NS_ENUM(NSInteger,
                 FASignalType) { FASignalTypeHeartBeat = 0,
                                 FASignalTypeLoginRequest = 1,
@@ -25,6 +26,7 @@ typedef NS_ENUM(NSInteger, FABizType) { FABizTypeCalling = 1024,
                                         FABizTypeEndSession = 4096 };
 @interface FAModel : NSObject
 + (NSDictionary *)data2Dic:(NSData *)data;
++ (NSData *)dic2Data:(NSDictionary *)dic;
 + (NSString *)getIpLocally:(NSString *)networkInterface
                  ipVersion:(int)ipVersion;
 @end

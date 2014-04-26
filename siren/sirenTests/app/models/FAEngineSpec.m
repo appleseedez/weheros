@@ -32,7 +32,7 @@ describe(@"FAEngine", ^{
 #if HAS_NET // not have connection
     // this is interesting!
     it(@"should get local ip address", ^{
-      [[[[sut class] getIpLocally:kNetInterfaceWIFI
+      [[[[sut class] getIpLocally:kNetInterfaceCellular
                         ipVersion:4] shouldNot] beNil];
     });
 #else

@@ -59,6 +59,14 @@
   [self connectWithRequest:connectRequest];
   return YES;
 }
+
+- (NSInteger)send:(id<IFARequest>)data {
+  NSDictionary *payload = (NSDictionary *)[data dictionary];
+  NSInteger signalType = [[payload valueForKey:kSignalType] integerValue];
+  NSData *binData = [FAModel dic2Data:payload];
+  [self.sock writeData:binData withTimeout:-1 tag:signalType];
+  return [binData length];
+}
 #pragma mark - socket delegate
 // connected to host
 - (void)socket:(GCDAsyncSocket *)sock
@@ -99,10 +107,12 @@
       // bytes]]方法转换成json格式字符串.
       // 再转换为NSDictionary. 因为stringWithUTF8String:
       // 方法能够自动去掉结尾的结束符.
+      NSLog(@"===========================> the origin length is %d", pkgLength);
       pkgLength = ntohs(pkgLength);
-      if (pkgLength < 0) {
-        pkgLength = 0;
-      }
+      NSLog(@"<==================================== length is %d", pkgLength);
+      //      if (pkgLength < 0) {
+      //      pkgLength = 0;
+      //      }
       /*现在只需要指名需要读多少长. */
       [sock readDataToLength:pkgLength withTimeout:-1 tag:PAYLOAD_PART];
     }
@@ -116,7 +126,7 @@
     FAControlRes *res = [FAControlRes new];
     res.binPayLoad = data;
     // this will trigger the kvo;
-    dispatch_async(dispatch_get_main_queue(), ^{ self.response = res; });
+    self.response = res;
     break;
   }
 

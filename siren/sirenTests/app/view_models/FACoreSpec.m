@@ -9,6 +9,7 @@
 #import <Kiwi/Kiwi.h>
 #import "FACore.h"
 #import "FAReachability.h"
+#import "FAStartSessionReq.h"
 SPEC_BEGIN(FACoreSpec)
 
 describe(@"FACore", ^{
@@ -59,6 +60,18 @@ describe(@"FACore", ^{
           equal:theValue(FAConnectionStatusDisconnected)];
     });
     afterEach (^{ [core.tcpConnection disconnect]; });
+  });
+  context(@"Core send & recevie data", ^{
+    FACore *core = [FACore new];
+    core.reach.reachStatus = @(YES);
+    it(@"send start session req", ^{
+      sleep(3);
+      FAStartSessionReq *startSessionReq = [FAStartSessionReq new];
+      startSessionReq.peerAccount = @"liuyang";
+      startSessionReq.myAccount = @"appleseedez";
+      [core dial:startSessionReq];
+      sleep(3);
+    });
   });
 });
 

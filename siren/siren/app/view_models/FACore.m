@@ -7,6 +7,7 @@
 //
 
 #import "FACore.h"
+#import "FACallingPeerReq.h"
 @interface FACore ()
 // tcp data subscription.
 @property(nonatomic, strong) RACDisposable *tcpDataSubscription;
@@ -14,6 +15,10 @@
 @property(nonatomic, strong) RACDisposable *tcpConnectionStatusSubscription;
 // engine subscription.
 @property(nonatomic, strong) RACDisposable *engineSubscription;
+// what the state is current session state
+@property(nonatomic, strong) NSNumber *sessionState;
+// route the res data to the right logic
+- (void)routeFromData:(NSDictionary *)data;
 @end
 
 @implementation FACore
@@ -23,6 +28,7 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
+    [self setSessionState:@(FASessionStateIdle)];
     [self setupTCPDataSubscription];
     [self setupTCPConnectionStatusSubscription];
     [self setupEngineSubscription];
@@ -36,10 +42,12 @@
 }
 
 #pragma mark - logic
-
+- (RACSignal *)sessionStateSignal {
+  return RACObserve(self, sessionState);
+}
 - (void)setupTCPDataSubscription {
     RACSignal *tcpSignal =
-    [[RACObserve(self.tcpConnection, response) filter:^BOOL(id value) {
+    [[[RACObserve(self.tcpConnection, response) filter:^BOOL(id value) {
       return nil != value;
     } ] map:^id(id<IFAResponse> res) {
       NSDictionary *resData = [[res body] valueForKey:@"payload"];
@@ -48,7 +56,7 @@
       // the self cycle problem.
       [self routeFromData:resData];
       return resData;
-    }];
+    }] subscribeOn:[RACScheduler scheduler]];
     self.tcpDataSubscription =
     [tcpSignal subscribeNext:^(NSDictionary * payload) {
       // subscribeNext nee no logic just for debug.
@@ -65,7 +73,7 @@
  **/
 - (void)setupTCPConnectionStatusSubscription {
   RACSignal *tcpConnectionStatusSignal =
-    [[RACSignal combineLatest:@[ RACObserve(self.tcpConnection, status), RACObserve(self.reach, reachStatus)] reduce:^id(NSNumber* connectionStatus,NSNumber* reachabilityStatus){
+    [[[RACSignal combineLatest:@[ RACObserve(self.tcpConnection, status), RACObserve(self.reach, reachStatus)] reduce:^id(NSNumber* connectionStatus,NSNumber* reachabilityStatus){
 
     NSLog(@"what is the reduce :%@,%@", connectionStatus, reachabilityStatus);
     if (![reachabilityStatus boolValue]) {
@@ -88,7 +96,7 @@
       [self.tcpConnection disconnect];
     }
     return stat;
-  }] ;
+  }] subscribeOn:[RACScheduler scheduler]] ;
     self.tcpConnectionStatusSubscription = [tcpConnectionStatusSignal
         subscribeNext:^(NSNumber *
                         stat) {
@@ -109,7 +117,57 @@
                                }];
 }
 
+/**
+ *  One kind of data routing implement.
+ *
+ *  @param data :the data flow from the socket
+ */
 - (void)routeFromData:(NSDictionary *)data {
+  // the data has the fix format
+  // head+body pure JSON
+  NSDictionary *head = [data valueForKey:kHead];
+  NSDictionary *body = [data valueForKey:kBody];
+  NSInteger signalType = [[head valueForKey:kSignalType] integerValue];
+  switch (signalType) {
+  case FASignalTypeLoginResponse: {
+    //  login success
+    // login failed
+  } break;
+
+  case FASignalTypeStartSessionResponse: {
+    /**
+     *  waiting for the engine to get ready for rolling
+     *
+     *  @param sessionParams @{@"localIP":string,@"localPort":1234}
+     *
+     *  @return void
+     */
+    [[[self.engine prepareForSessionWithProbeIP:@"" probePort:0 bakPort:0] map:^id(NSDictionary* sessionParams) {
+      FACallingPeerReq *callingPeerReq;
+      callingPeerReq =
+          [self buildCallingPeerReqWithStartSessionRes:body
+                                         sessionParams:sessionParams];
+      // send the calling peer request.
+      [self.tcpConnection send:callingPeerReq];
+      return callingPeerReq;
+    }] subscribeNext:^(FACallingPeerReq* data) {
+      NSLog(@"the calling peer request send to the peer : %@", data);
+    }];
+
+  } break;
+
+  case FASignalTypeAnsweringPeer: {
+    // as a caller, i recevied answering.
+  } break;
+  case FASignalTypeCallingPeer: {
+    // as a idel peer , i recevied calling.
+  } break;
+  case FASignalTypeHeartBeat: {
+    // as a client i receive heartbeat.
+  } break;
+  default:
+    break;
+  }
 }
 
 - (void)dispose {
@@ -119,6 +177,50 @@
   [self.engineSubscription dispose];
   [self.tcpConnection disconnect];
 }
+
+#pragma mark - protocal
+- (void)dial:(id<IFARequest>)someOne {
+  [self.tcpConnection send:someOne];
+}
+
+#pragma mark - private
+// do the mess work. build the calling peer request.
+- (FACallingPeerReq *)
+    buildCallingPeerReqWithStartSessionRes:(NSDictionary *)startSessionReqBody
+                             sessionParams:(NSDictionary *)sessionParams {
+  // into calling process or just stop the whole process
+  // using the data res from the SS to generate the callingPeer data
+  // structure.
+  NSString *relayIP = [startSessionReqBody valueForKey:kRelayIP];
+  NSUInteger relayPort =
+      [[startSessionReqBody valueForKey:kRelayPort] integerValue];
+  NSUInteger mySessionID =
+      [[startSessionReqBody valueForKey:kSessionID] integerValue];
+  // this is the session start moment, sessionIDs are generated by SS, they
+  // are pairs. calling peer get the smaller one from SS,
+  // it is the calling peer's duty to give the other part of sessionID pair
+  // to
+  // the answering peer.
+  NSUInteger peerSessionID = mySessionID + 1;
+  NSString *peerAccount = [startSessionReqBody valueForKey:kPeerAccount];
+  NSString *myAccount = [startSessionReqBody valueForKey:kMyAccount];
+
+  FACallingPeerReq *callingPeerReq = [FACallingPeerReq new];
+  callingPeerReq.myAccount = myAccount;
+  callingPeerReq.mySessionID = mySessionID;
+  callingPeerReq.myLocalIP = [sessionParams valueForKey:@"localIP"];
+  callingPeerReq.myLocalPort =
+      [[sessionParams valueForKey:@"localPort"] integerValue];
+  callingPeerReq.myInterIP = [sessionParams valueForKey:@"interIP"];
+  callingPeerReq.myInterPort =
+      [[sessionParams valueForKey:@"interPort"] integerValue];
+  callingPeerReq.relayIP = relayIP;
+  callingPeerReq.relayPort = relayPort;
+  callingPeerReq.peerAccount = peerAccount;
+  callingPeerReq.peerSessionID = peerSessionID;
+  return callingPeerReq;
+}
+
 #pragma mark - accessors
 @synthesize reach = _reach;
 - (FAReachability *)reach {

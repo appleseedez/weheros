@@ -15,4 +15,5 @@
 @property(nonatomic) NSString *account;    // my account
 @property(nonatomic) NSString *signalType; // what kind of signal it is
 @property(nonatomic) NSNumber *status;     // what the req status. always 0
+- (NSDictionary *)tokenDic;
 @end

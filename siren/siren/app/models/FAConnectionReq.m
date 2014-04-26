@@ -11,10 +11,10 @@
 @implementation FAConnectionReq
 - (id)head {
   return @{
-    @"token" : self.token,
-    @"type" : self.signalType,
-    @"status" : @(0),
-    @"seq" : @([FASeqGen seq])
+    //    kToken : self.token,
+    //    kSignalType : self.signalType,
+    //    kStatus : @(0),
+    //    kSeq : @([FASeqGen seq])
   };
 }
 

@@ -10,6 +10,8 @@
 
 @protocol IFARequest <NSObject>
 @optional
-- (id)head; // head info of request
-- (id)body; // body info of request
+- (id)head;       // head info of request
+- (id)body;       // body info of request
+- (id)dictionary; // return the dic format of the reqeust
+- (id)bin;        // return the binary format of the request
 @end

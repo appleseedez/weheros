@@ -9,5 +9,5 @@
 #import "FAResponse.h"
 
 @interface FAControlRes : FAResponse
-@property(nonatomic) NSData *binPayLoad;
+@property(atomic) NSData *binPayLoad;
 @end

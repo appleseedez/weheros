@@ -33,6 +33,9 @@ static NSUInteger _localPortSuffix = 0;
 - (void)disableSpeaker;
 - (void)startP2P;
 - (void)stopP2P;
+- (RACSignal *)prepareForSessionWithProbeIP:(NSString *)probeIP
+                                  probePort:(NSUInteger)probePort
+                                    bakPort:(NSUInteger)bakPort;
 @property(nonatomic, strong) NSNumber *engineState;
 
 #if DEBUG

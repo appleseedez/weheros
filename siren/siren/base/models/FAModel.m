@@ -12,6 +12,7 @@
 
 @implementation FAModel
 + (NSDictionary *)data2Dic:(NSData *)data {
+  NSAssert(data != nil, @"data is nil");
   NSError *error;
   /* parse the response. we need to know the type for delegate method
    * invoking. and status for success or failed */
@@ -20,6 +21,7 @@
   /* 补充: 此处不能直接使用data进行json转换的原因是数据在末尾添加了结束符*/
   NSString *responseString =
       [NSString stringWithUTF8String:(const char *)[data bytes]];
+  NSAssert(responseString != nil, @"not parsed to string");
   NSDictionary *response = [NSJSONSerialization
       JSONObjectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]
                  options:NSJSONReadingMutableContainers
@@ -28,10 +30,43 @@
     [NSException exceptionWithName:@"500:data serialization error."
                             reason:@"Wrong format"
                           userInfo:nil];
+    response = @{};
   }
   return response;
 }
++ (NSData *)dic2Data:(NSDictionary *)dic {
 
+  /*构造发送到信令服务器的数据包*/
+  NSError *error;
+  // 将NSDictionary 序列化为JSON数据.
+  NSData *jsonData =
+      [NSJSONSerialization dataWithJSONObject:dic options:0 error:&error];
+  if (error) {
+    [NSException exceptionWithName:@"400:data serialzation error"
+                            reason:@"数据序列化出错鸟"
+                          userInfo:nil];
+  }
+
+  /*
+   在所有请求头部都必须包含2个字节的包长度数据.
+   we need to prepend the length of the request in bytes.This is protocol with
+   server.
+   all the exchange data between client and server should have the package
+   length ahead.
+   */
+  uint16_t pkgLength = (uint16_t)[jsonData length]; // calculate the length of
+                                                    // the data package in
+                                                    // bytes.
+  pkgLength++; // we need to append a '\0' to the package.so that need count in.
+  pkgLength = htons(pkgLength); // big end/small end transform.
+  /* append the '\0' */
+  NSMutableData *data = [NSMutableData data];
+  //    [requestData appendShort:pkgLength];
+  [data appendData:[NSData dataWithBytes:&pkgLength length:sizeof(uint16_t)]];
+  [data appendData:jsonData];
+  [data appendByte:'\0'];
+  return [data copy];
+}
 + (NSString *)getIpLocally:(NSString *)networkInterface
                  ipVersion:(int)ipVersion {
   if (ipVersion != 4 && ipVersion != 6) {

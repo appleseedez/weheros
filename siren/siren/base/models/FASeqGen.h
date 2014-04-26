@@ -9,5 +9,5 @@
 #import "FAModel.h"
 
 @interface FASeqGen : FAModel
-+ (NSUInteger)seq;
++ (NSNumber*)seq;
 @end

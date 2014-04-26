@@ -9,5 +9,10 @@
 #import "FARequest.h"
 
 @implementation FARequest
-
+- (NSDictionary *)tokenDic {
+  return @{ @"s" : @"abcdefghijklmnopqrstuvwxyz" };
+}
+- (NSString *)token {
+  return @"abcdefghijklmnopqrstuvwxyz";
+}
 @end

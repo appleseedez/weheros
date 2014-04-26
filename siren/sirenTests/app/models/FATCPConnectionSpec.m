@@ -36,7 +36,7 @@ describe(@"FATCPConnection", ^{
       [[theValue([[tcpConnection status] integerValue]) should]
           equal:theValue(FAConnectionStatusDisconnected)];
     });
-         #endif
+#endif
   });
 });
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "IFARequest.h"
 @protocol IFACore <NSObject>
-
+- (void)dial:(id<IFARequest>)someOne;
 @end

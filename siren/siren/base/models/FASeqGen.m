@@ -9,7 +9,7 @@
 #import "FASeqGen.h"
 static NSUInteger SeqNumber = 1;
 @implementation FASeqGen
-+ (NSUInteger)seq {
-  return SeqNumber++;
++ (NSNumber *)seq {
+  return @(SeqNumber++);
 }
 @end

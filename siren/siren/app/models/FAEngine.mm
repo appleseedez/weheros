@@ -101,6 +101,57 @@ UIView *_pview_local;
 }
 - (void)stopP2P {
 }
+// get the interIP & port, localIP & port for the negotiation data struction
+- (RACSignal *)fetchParamsForSessionWithProbeIP:(NSString *)probeIP
+                                      probePort:(NSUInteger)probePort
+                                        bakPort:(NSUInteger)bakPort {
+  RACReplaySubject *subject = [RACReplaySubject subject];
+  // need the network be setup;
+  [self setupNetwork];
+  // get the localIP & port;
+  NSString *localIP = [FAModel getIpLocally:kNetInterfaceWIFI ipVersion:4];
+  if (nil == localIP) {
+    localIP = [FAModel getIpLocally:kNetInterfaceCellular ipVersion:4];
+    if (localIP == nil) {
+      localIP = BLANK_STRING;
+    }
+  }
+
+  char self_inter_ip[16];
+  uint16_t self_inter_port;
+  NSString *interIP = BLANK_STRING;
+  //获取本机外网ip和端口
+  // 1st time
+  NSLog(@"use backport:%d for the 1st get", bakPort);
+  [[self class] sharedAPI]->GetSelfInterAddr([probeIP UTF8String], bakPort,
+                                             self_inter_ip, self_inter_port);
+  // 2nd time
+  NSLog(@"use probeport:%d for the 2nd get", probePort);
+  int ret = [[self class] sharedAPI]->GetSelfInterAddr([probeIP UTF8String],
+                                                       probePort, self_inter_ip,
+                                                       self_inter_port);
+  if (ret != 0) {
+    interIP = BLANK_STRING;
+  } else {
+    interIP = [NSString stringWithUTF8String:self_inter_ip];
+  }
+  [subject sendNext:@{
+                      @"localIP" : localIP,
+                      @"localPort" : @(self.myLocalPort),
+                      @"interIP" : interIP,
+                      @"interPort" : @(self_inter_port)
+                    }];
+  [subject sendCompleted];
+  return subject;
+}
+- (RACSignal *)prepareForSessionWithProbeIP:(NSString *)probeIP
+                                  probePort:(NSUInteger)probePort
+                                    bakPort:(NSUInteger)bakPort {
+
+  return [self fetchParamsForSessionWithProbeIP:probeIP
+                                      probePort:probePort
+                                        bakPort:bakPort];
+}
 #pragma mark - accessors
 + (CAVInterfaceAPI *)sharedAPI {
   static CAVInterfaceAPI *_api = nil;

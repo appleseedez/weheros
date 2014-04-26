@@ -27,6 +27,8 @@
 		BA73948C18FFBD4B002764A2 /* libweheroSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE5E818FE3119007513B4 /* libweheroSDK.a */; };
 		BA73949418FFBE50002764A2 /* weheroSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA73949218FFBE50002764A2 /* weheroSDK.mm */; };
 		BA73949518FFBE50002764A2 /* libAVInterface.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA73949318FFBE50002764A2 /* libAVInterface.a */; };
+		BA747BA41908F4FC0072A0BC /* NSData+Byte.m in Sources */ = {isa = PBXBuildFile; fileRef = BA747BA31908F4FC0072A0BC /* NSData+Byte.m */; };
+		BA747BA7190902620072A0BC /* FAStartSessionReq.m in Sources */ = {isa = PBXBuildFile; fileRef = BA747BA6190902620072A0BC /* FAStartSessionReq.m */; };
 		BA95200418F287C50028FE24 /* FAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95200318F287C50028FE24 /* FAModel.m */; };
 		BA95200718F287DB0028FE24 /* FAViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA95200618F287DB0028FE24 /* FAViewModel.m */; };
 		BA95200B18F288640028FE24 /* FAEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA95200A18F288640028FE24 /* FAEngine.mm */; };
@@ -58,6 +60,8 @@
 		BACAE61C18FE38E1007513B4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAE61618FE34CA007513B4 /* CoreMedia.framework */; };
 		BAE7B3641907518500B0FD97 /* FACoreSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE7B3631907518500B0FD97 /* FACoreSpec.m */; };
 		BAEC1DFD190379860011EDA8 /* FAEngineSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC1DFC190379860011EDA8 /* FAEngineSpec.m */; };
+		BAEC75B9190B5ED100CDAADF /* FACallingPeerReq.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC75B8190B5ED100CDAADF /* FACallingPeerReq.m */; };
+		BAEC75BC190B8FF400CDAADF /* FACore+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEC75BB190B8FF400CDAADF /* FACore+Private.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +123,10 @@
 		BA73949118FFBE50002764A2 /* weheroSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weheroSDK.h; sourceTree = "<group>"; };
 		BA73949218FFBE50002764A2 /* weheroSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = weheroSDK.mm; sourceTree = "<group>"; };
 		BA73949318FFBE50002764A2 /* libAVInterface.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAVInterface.a; sourceTree = "<group>"; };
+		BA747BA21908F4FC0072A0BC /* NSData+Byte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Byte.h"; sourceTree = "<group>"; };
+		BA747BA31908F4FC0072A0BC /* NSData+Byte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Byte.m"; sourceTree = "<group>"; };
+		BA747BA5190902620072A0BC /* FAStartSessionReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAStartSessionReq.h; sourceTree = "<group>"; };
+		BA747BA6190902620072A0BC /* FAStartSessionReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAStartSessionReq.m; sourceTree = "<group>"; };
 		BA951FFD18F287910028FE24 /* IFAConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFAConnection.h; sourceTree = "<group>"; };
 		BA951FFE18F287910028FE24 /* IFAEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFAEngine.h; sourceTree = "<group>"; };
 		BA951FFF18F287910028FE24 /* IFAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFAResponse.h; sourceTree = "<group>"; };
@@ -166,6 +174,10 @@
 		BACAE61918FE34DE007513B4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		BAE7B3631907518500B0FD97 /* FACoreSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FACoreSpec.m; sourceTree = "<group>"; };
 		BAEC1DFC190379860011EDA8 /* FAEngineSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAEngineSpec.m; sourceTree = "<group>"; };
+		BAEC75B7190B5ED100CDAADF /* FACallingPeerReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FACallingPeerReq.h; sourceTree = "<group>"; };
+		BAEC75B8190B5ED100CDAADF /* FACallingPeerReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FACallingPeerReq.m; sourceTree = "<group>"; };
+		BAEC75BA190B8FF400CDAADF /* FACore+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FACore+Private.h"; sourceTree = "<group>"; };
+		BAEC75BB190B8FF400CDAADF /* FACore+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FACore+Private.m"; sourceTree = "<group>"; };
 		F00A83230321457381D862A3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,6 +347,8 @@
 			children = (
 				BA95201018F28B6A0028FE24 /* FACore.h */,
 				BA95201118F28B6A0028FE24 /* FACore.m */,
+				BAEC75BA190B8FF400CDAADF /* FACore+Private.h */,
+				BAEC75BB190B8FF400CDAADF /* FACore+Private.m */,
 			);
 			path = view_models;
 			sourceTree = "<group>";
@@ -396,6 +410,8 @@
 		BA951FFA18F2875F0028FE24 /* vendors */ = {
 			isa = PBXGroup;
 			children = (
+				BA747BA21908F4FC0072A0BC /* NSData+Byte.h */,
+				BA747BA31908F4FC0072A0BC /* NSData+Byte.m */,
 				BA951FFB18F2875F0028FE24 /* sdk */,
 			);
 			path = vendors;
@@ -430,6 +446,10 @@
 				BAB0701C19010AFF005E82FF /* FAControlReq.m */,
 				BAB0701E19010B38005E82FF /* FAControlRes.h */,
 				BAB0701F19010B38005E82FF /* FAControlRes.m */,
+				BA747BA5190902620072A0BC /* FAStartSessionReq.h */,
+				BA747BA6190902620072A0BC /* FAStartSessionReq.m */,
+				BAEC75B7190B5ED100CDAADF /* FACallingPeerReq.h */,
+				BAEC75B8190B5ED100CDAADF /* FACallingPeerReq.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -699,8 +719,12 @@
 				BA95203218F3C8A70028FE24 /* FAToken.m in Sources */,
 				BA95200B18F288640028FE24 /* FAEngine.mm in Sources */,
 				BA95201218F28B6A0028FE24 /* FACore.m in Sources */,
+				BAEC75BC190B8FF400CDAADF /* FACore+Private.m in Sources */,
+				BA747BA7190902620072A0BC /* FAStartSessionReq.m in Sources */,
 				BA95202218F3A05F0028FE24 /* FAReachability.m in Sources */,
+				BAEC75B9190B5ED100CDAADF /* FACallingPeerReq.m in Sources */,
 				BA95201A18F299400028FE24 /* FAConnectionReq.m in Sources */,
+				BA747BA41908F4FC0072A0BC /* NSData+Byte.m in Sources */,
 				BA95200E18F2892B0028FE24 /* FATCPConnection.m in Sources */,
 				BAB0701A190109D2005E82FF /* FAResponse.m in Sources */,
 				BAB0702019010B38005E82FF /* FAControlRes.m in Sources */,
