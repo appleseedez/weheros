@@ -13,6 +13,7 @@
 SPEC_BEGIN(FACoreSpec)
 
 describe(@"FACore", ^{
+#if HAS_NET
   context(@"Core connection", ^{
     FACore *core = [FACore new];
     // first given the condition that the reachability is bad
@@ -61,6 +62,7 @@ describe(@"FACore", ^{
     });
     afterEach (^{ [core.tcpConnection disconnect]; });
   });
+#endif
   context(@"Core send & recevie data", ^{
     FACore *core = [FACore new];
     core.reach.reachStatus = @(YES);

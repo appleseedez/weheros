@@ -142,7 +142,8 @@
      *
      *  @return void
      */
-    [[[self.engine prepareForSessionWithProbeIP:@"" probePort:0 bakPort:0] map:^id(NSDictionary* sessionParams) {
+    // the probe ip address must be reachable. or there will be crash.
+    [[[self.engine prepareForSessionWithProbeIP:@"115.29.145.142" probePort:11117 bakPort:11110 stunServer:@""] map:^id(NSDictionary* sessionParams) {
       FACallingPeerReq *callingPeerReq;
       callingPeerReq =
           [self buildCallingPeerReqWithStartSessionRes:body

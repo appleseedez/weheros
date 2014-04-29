@@ -7,35 +7,45 @@
 //
 
 #import "FAModel.h"
-typedef NS_ENUM(NSInteger, FAEngineState) {
-  FAEngineStateShutdown = -1, FAEngineStateNetworkReady,
-  FAEngineStateStarted,       FAEngineStateCameraOpened,
-  FAEngineStateCameraClosed,  FAEngineStateSoundMute,
-  FAEngineStateSoundUnMute,   FAEngineStateP2PInProcess,
-  FAEngineStateSpeakerEabled, FAEngineStateSpeakerDisabled,
-  FAEngineStateP2PSuccessed,  FAEngineStateP2PFailed,
-  FAEngineStateMediaClosed,   FAEngineStateNetworkClosed
+/**
+
+ **/
+typedef NS_ENUM(NSUInteger, FAEngineState) {
+  FAEngineStateShouldShutdown = 1,   FAEngineStateDidShutdown,
+  FAEngineStateShouldStart,          FAEngineStateDidStart,
+  FAEngineStateNetworkShouldClosed,  FAEngineStateNetworkDidClosed,
+  FAEngineStateNetworkShouldReady,   FAEngineStateNetworkDidReady,
+  FAEngineStateShouldStartP2P,       FAEngineStateP2PInProcess,
+  FAEngineStateP2PDidSuccess,        FAEngineStateP2PDidFail,
+  FAEngineStateShouldStopP2P,        FAEngineStateDidStopP2P,
+  FAEngineStateSoundShouldMute,      FAEngineStateSoundDidMute,
+  FAEngineStateSoundShouldUnmute,    FAEngineStateSoundDidUnmute,
+  FAEngineStateSpeakerShouldDisable, FAEngineStateSpeakerDidDisable,
+  FAEngineStateSpeakerShouldEnable,  FAEngineStateSpeakerDidEable,
+  FAEngineStateCameraShouldClose,    FAEngineStateCameraDidClose,
+  FAEngineStateCameraShouldOpen,     FAEngineStateCameraDidOpen
 };
 // used to generate localPort number
 static NSUInteger _localPortSuffix = 0;
 @interface FAEngine : FAModel <IFAEngine>
 #pragma mark - engine life
-- (void)startEngine;
-- (void)shutDownEngine;
-- (void)setupNetwork;
-- (void)closeNetwork;
+- (bool)startEngine;
+- (bool)shutDownEngine;
+- (bool)setupNetwork;
+- (bool)closeNetwork;
 #pragma mark - engine function
-- (void)openCamera;
-- (void)closeCamera;
-- (void)mute;
-- (void)unmute;
-- (void)enableSpeaker;
-- (void)disableSpeaker;
-- (void)startP2P;
-- (void)stopP2P;
+- (bool)openCamera;
+- (bool)closeCamera;
+- (bool)mute;
+- (bool)unmute;
+- (bool)enableSpeaker;
+- (bool)disableSpeaker;
+- (RACSignal *)startP2P:(NSDictionary *)params;
+- (bool)stopP2P;
 - (RACSignal *)prepareForSessionWithProbeIP:(NSString *)probeIP
                                   probePort:(NSUInteger)probePort
-                                    bakPort:(NSUInteger)bakPort;
+                                    bakPort:(NSUInteger)bakPort
+                                 stunServer:(NSString *)stunServer;
 @property(nonatomic, strong) NSNumber *engineState;
 
 #if DEBUG

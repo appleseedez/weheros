@@ -19,16 +19,15 @@ describe(@"FAEngine", ^{
   context(@"engine state", ^{
     FAEngine *sut = [FAEngine new];
     it(@"should in the right state", ^{
-
       // 1. start the engine when init fiinish
       [[theValue([[sut engineState] integerValue]) should]
-          equal:theValue(FAEngineStateStarted)];
+          equal:theValue(FAEngineStateDidStart)];
       // 2. setup the network for udp pkg
-      [sut setupNetwork];
+      sut.engineState = @(FAEngineStateNetworkShouldReady);
       [[theValue([[sut engineState] integerValue]) should]
-          equal:theValue(FAEngineStateNetworkReady)];
+          equal:theValue(FAEngineStateNetworkDidReady)];
     });
-      
+           
 #if HAS_NET // not have connection
     // this is interesting!
     it(@"should get local ip address", ^{
@@ -47,35 +46,38 @@ describe(@"FAEngine", ^{
 
     it(@"should be mute", ^{
       // when
-      [sut mute];
+      sut.engineState = @(FAEngineStateSoundShouldMute);
       [[theValue([[sut engineState] integerValue]) should]
-          equal:theValue(FAEngineStateSoundMute)];
+          equal:theValue(FAEngineStateSoundDidMute)];
     });
 
     it(@"should be unmute", ^{
       // when
-      [sut unmute];
+      sut.engineState = @(FAEngineStateSoundShouldUnmute);
       [[theValue([[sut engineState] integerValue]) should]
-          equal:theValue(FAEngineStateSoundUnMute)];
+          equal:theValue(FAEngineStateSoundDidUnmute)];
     });
     it(@"should enableSpeaker", ^{
-      [sut enableSpeaker];
-
+      sut.engineState = @(FAEngineStateSpeakerShouldEnable);
       [[theValue([[sut engineState] integerValue]) should]
-          equal:theValue(FAEngineStateSpeakerEabled)];
+          equal:theValue(FAEngineStateSpeakerDidEable)];
     });
     it(@"should disableSpeaker", ^{
-      [sut disableSpeaker];
+      sut.engineState = @(FAEngineStateSpeakerShouldDisable);
       [[theValue([[sut engineState] integerValue]) should]
-          equal:theValue(FAEngineStateSpeakerDisabled)];
+          equal:theValue(FAEngineStateSpeakerDidDisable)];
     });
   });
   context(@"engine p2p process", ^{
     FAEngine *sut = [FAEngine new];
     it(@"should start P2P process", ^{
-      [sut startP2P];
+      sut.engineState = @(FAEngineStateShouldStartP2P);
       [[theValue([[sut engineState] integerValue]) should]
           equal:theValue(FAEngineStateP2PInProcess)];
+      sleep(30);
+
+      [[theValue([[sut engineState] integerValue]) should]
+          equal:theValue(FAEngineStateP2PDidFail)];
     });
   });
 });

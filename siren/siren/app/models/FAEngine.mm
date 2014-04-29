@@ -8,6 +8,7 @@
 
 #import "FAEngine.h"
 #import "weheroSDK/AVInterface.hh"
+#import "weheroSDK/NatTypeImpl.h"
 
 UIView *_pview_local;
 @interface FAEngine ()
@@ -15,14 +16,101 @@ UIView *_pview_local;
 @property(nonatomic, copy) NSString *myCurrentInterIP;
 @property(nonatomic) NSUInteger myLocalPort;
 @property(nonatomic) dispatch_queue_t p2pQueue;
+@property(nonatomic) NSNumber *stateLock;
+@property(nonatomic) NSInteger selfNATType;
 @end
 @implementation FAEngine
 #pragma mark - engine life
 - (instancetype)init {
   self = [super init];
   if (self) {
-    self.engineState = @(FAEngineStateShutdown);
-    [self startEngine];
+
+    self.stateLock = @(0);
+    [[[RACObserve(self, engineState) filter:^BOOL(NSNumber* state) {
+      return state != nil && [state unsignedIntegerValue] !=
+                                 [self.stateLock unsignedIntegerValue];
+    }] map:^id(NSNumber * state) {
+      self.stateLock = state;
+      NSUInteger stateCase = [state unsignedIntegerValue];
+      switch (stateCase) {
+      case FAEngineStateShouldShutdown: {
+        if ([self shutDownEngine]) {
+          self.engineState = @(FAEngineStateDidShutdown);
+        }
+      } break;
+      case FAEngineStateShouldStart: {
+        if ([self startEngine]) {
+          self.engineState = @(FAEngineStateDidStart);
+        }
+      } break;
+      case FAEngineStateNetworkShouldReady: {
+        if ([self setupNetwork]) {
+          self.engineState = @(FAEngineStateNetworkDidReady);
+        }
+      } break;
+      case FAEngineStateNetworkShouldClosed: {
+        if ([self closeNetwork]) {
+          self.engineState = @(FAEngineStateNetworkDidClosed);
+        }
+      } break;
+      case FAEngineStateSoundShouldMute: {
+        if ([self mute]) {
+          self.engineState = @(FAEngineStateSoundDidMute);
+        }
+      } break;
+      case FAEngineStateSoundShouldUnmute: {
+        if ([self unmute]) {
+          self.engineState = @(FAEngineStateSoundDidUnmute);
+        }
+      } break;
+      case FAEngineStateSpeakerShouldEnable: {
+        if ([self enableSpeaker]) {
+          self.engineState = @(FAEngineStateSpeakerDidEable);
+        }
+      } break;
+      case FAEngineStateSpeakerShouldDisable: {
+        if ([self disableSpeaker]) {
+          self.engineState = @(FAEngineStateSpeakerDidDisable);
+        }
+      } break;
+      case FAEngineStateShouldStartP2P: {
+        self.engineState = @(FAEngineStateP2PInProcess);
+          [[[[[self startP2P:@{kPeerInterIP:@"",
+                               kPeerInterPort:@(2112),
+                               kPeerLocalIP:@"",
+                               kPeerLocalPort:@(23213),
+                               kRelayIP:@"",
+                               kRelayPort:@(213),
+                               kPeerSessionID:@(1112),
+                               kPeerNATType:@(1)}] subscribeOn:[RACScheduler scheduler]]
+             deliverOn:[RACScheduler mainThreadScheduler]]
+            map:^id(NSDictionary* p2pResult) {
+            if ([[p2pResult valueForKey:@"code"] boolValue]) {
+              self.engineState = @(FAEngineStateP2PDidSuccess);
+              // start data transport
+              [self startTransportMediaData];
+            } else {
+              // p2p just failed. it's the caller's response to trigger stopP2P
+              self.engineState = @(FAEngineStateP2PDidFail);
+            }
+            return p2pResult;
+          }] subscribeNext:^(NSDictionary* result) {
+            NSLog(@"p2p process result:%@", result);
+          }];
+      } break;
+      case FAEngineStateShouldStopP2P: {
+        if ([self stopP2P]) {
+          self.engineState = @(FAEngineStateDidStopP2P);
+        }
+      } break;
+      default:
+        break;
+      }
+      return state;
+    }] subscribeNext:^(NSNumber* state) {
+      NSLog(@"engine state is %@", state);
+    }];
+    self.engineState = @(FAEngineStateShouldStart);
   }
   return self;
 }
@@ -30,84 +118,112 @@ UIView *_pview_local;
 /**
  *  when the media init finish. the engine is started
  */
-- (void)startEngine {
-  bool ret = [[self class] sharedAPI]->MediaInit();
-  if (ret) {
-    self.engineState = @(FAEngineStateStarted);
-  }
+- (bool)startEngine {
+  self.engineState = @(FAEngineStateShouldShutdown);
+  return [[self class] sharedAPI]->MediaInit();
 }
-- (void)shutDownEngine {
-  bool ret = [[self class] sharedAPI]->Terminate();
-  if (ret) {
-    self.engineState = @(FAEngineStateShutdown);
-  }
+- (bool)shutDownEngine {
+  return [[self class] sharedAPI]->Terminate();
 }
 
 /**
  *  the network is for the p2p tunneling. all about the udp pkg
  */
-- (void)setupNetwork {
+- (bool)setupNetwork {
+  self.engineState = @(FAEngineStateNetworkShouldClosed);
   self.myLocalPort = LocalBasePort + (++_localPortSuffix) % 9;
-  bool ret = [[self class] sharedAPI]->OpenNetWork(self.myLocalPort);
-  if (ret) {
-    self.engineState = @(FAEngineStateNetworkReady);
-  }
+  return [[self class] sharedAPI]->OpenNetWork((int)self.myLocalPort);
 }
-- (void)closeNetwork {
-  bool ret = [[self class] sharedAPI]->CloseNetWork();
-  if (ret) {
-    self.engineState = @(FAEngineStateNetworkClosed);
-  }
+- (bool)closeNetwork {
+  return [[self class] sharedAPI]->CloseNetWork();
 }
 
 #pragma mark - engine function
-- (void)openCamera {
+- (bool)openCamera {
+  return false;
 }
-- (void)closeCamera {
+- (bool)closeCamera {
+  return false;
 }
-- (void)mute {
+- (bool)mute {
   // TODO: SetMuteEnable should have return type
   [[self class] sharedAPI]->SetMuteEnble(MTVoe, false);
-  self.engineState = @(FAEngineStateSoundMute);
+  return true;
 }
-- (void)unmute {
+- (bool)unmute {
   [[self class] sharedAPI]->SetMuteEnble(MTVoe, true);
-  self.engineState = @(FAEngineStateSoundUnMute);
+  return true;
 }
-- (void)enableSpeaker {
+- (bool)enableSpeaker {
   NSError *error = nil;
   [[AVAudioSession sharedInstance] setActive:YES error:&error];
   [[AVAudioSession sharedInstance]
       setCategory:AVAudioSessionCategoryPlayAndRecord
       withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker
             error:&error];
-  if (nil == error) {
-    self.engineState = @(FAEngineStateSpeakerEabled);
-  }
+  return nil == error;
 }
-- (void)disableSpeaker {
+- (bool)disableSpeaker {
   NSError *error = nil;
   [[AVAudioSession sharedInstance] setActive:YES error:&error];
   [[AVAudioSession sharedInstance]
       setCategory:AVAudioSessionCategoryPlayAndRecord
       withOptions:AVAudioSessionCategoryOptionDuckOthers
             error:&error];
-  if (nil == error) {
-    self.engineState = @(FAEngineStateSpeakerDisabled);
+  return nil == error;
+}
+- (RACSignal *)startP2P:(NSDictionary *)params {
+  RACReplaySubject *subject = [RACReplaySubject subject];
+  TP2PPeerArgc p2pArgc;
+  ::memset(&p2pArgc, 0, sizeof(TP2PPeerArgc));
+  //  NSAssert([params valueForKey:kPeerInterIP], @"no such key");
+  // 外网地址
+  ::strncpy(p2pArgc.otherInterIP,
+            [[params valueForKey:kPeerInterIP] UTF8String],
+            sizeof(p2pArgc.otherInterIP));
+  p2pArgc.otherInterPort = [[params valueForKey:kPeerInterPort] intValue];
+  // 内网地址
+  ::strncpy(p2pArgc.otherLocalIP,
+            [[params valueForKey:kPeerLocalIP] UTF8String],
+            sizeof(p2pArgc.otherLocalIP));
+  p2pArgc.otherLocalPort = [[params valueForKey:kPeerLocalPort] intValue];
+  // 转发地址
+  ::strncpy(p2pArgc.otherForwardIP, [[params valueForKey:kRelayIP] UTF8String],
+            sizeof(p2pArgc.otherForwardIP));
+  p2pArgc.otherForwardPort = [[params valueForKey:kRelayPort] intValue];
+
+  // 对方的ssid
+  p2pArgc.otherSsid = [[params valueForKey:kPeerSessionID] intValue];
+  // 自己的ssid
+  p2pArgc.selfSsid = [[params valueForKey:kMySessionID] intValue];
+
+  p2pArgc.otherNATType = [[params valueForKey:kPeerNATType] intValue];
+  p2pArgc.selfNATType = self.selfNATType;
+  // should i just use local detect
+  p2pArgc.localEnble = YES;
+  if (0 == [[self class] sharedAPI]->GetP2PPeer(p2pArgc)) {
+    [subject sendNext:@{ @"code" : @(YES) }];
+  } else {
+    [subject sendNext:@{ @"code" : @(NO) }];
   }
+  [subject sendCompleted];
+  return subject;
 }
-- (void)startP2P {
-  self.engineState = @(FAEngineStateP2PInProcess);
+- (bool)stopP2P {
+  return false;
 }
-- (void)stopP2P {
+
+- (bool)startTransportMediaData {
+  return YES;
 }
 // get the interIP & port, localIP & port for the negotiation data struction
 - (RACSignal *)fetchParamsForSessionWithProbeIP:(NSString *)probeIP
                                       probePort:(NSUInteger)probePort
-                                        bakPort:(NSUInteger)bakPort {
+                                        bakPort:(NSUInteger)bakPort
+                                     stunServer:(NSString *)stunServer {
   RACReplaySubject *subject = [RACReplaySubject subject];
   // need the network be setup;
-  [self setupNetwork];
+  self.engineState = @(FAEngineStateNetworkShouldReady);
   // get the localIP & port;
   NSString *localIP = [FAModel getIpLocally:kNetInterfaceWIFI ipVersion:4];
   if (nil == localIP) {
@@ -122,11 +238,13 @@ UIView *_pview_local;
   NSString *interIP = BLANK_STRING;
   //获取本机外网ip和端口
   // 1st time
-  NSLog(@"use backport:%d for the 1st get", bakPort);
+  // if the probeIP is not reachable, then this method will through bad address
+  // access.
+  NSLog(@"use backport:%lu for the 1st get", (unsigned long)bakPort);
   [[self class] sharedAPI]->GetSelfInterAddr([probeIP UTF8String], bakPort,
                                              self_inter_ip, self_inter_port);
   // 2nd time
-  NSLog(@"use probeport:%d for the 2nd get", probePort);
+  NSLog(@"use probeport:%lu for the 2nd get", (unsigned long)probePort);
   int ret = [[self class] sharedAPI]->GetSelfInterAddr([probeIP UTF8String],
                                                        probePort, self_inter_ip,
                                                        self_inter_port);
@@ -135,6 +253,11 @@ UIView *_pview_local;
   } else {
     interIP = [NSString stringWithUTF8String:self_inter_ip];
   }
+
+  // get myself the nat type
+  NatTypeImpl nat;
+  self.selfNATType = nat.GetNatType([stunServer UTF8String]);
+  // shoud i free the nat ?
   [subject sendNext:@{
                       @"localIP" : localIP,
                       @"localPort" : @(self.myLocalPort),
@@ -146,11 +269,13 @@ UIView *_pview_local;
 }
 - (RACSignal *)prepareForSessionWithProbeIP:(NSString *)probeIP
                                   probePort:(NSUInteger)probePort
-                                    bakPort:(NSUInteger)bakPort {
+                                    bakPort:(NSUInteger)bakPort
+                                 stunServer:(NSString *)stunSever {
 
   return [self fetchParamsForSessionWithProbeIP:probeIP
                                       probePort:probePort
-                                        bakPort:bakPort];
+                                        bakPort:bakPort
+                                     stunServer:stunSever];
 }
 #pragma mark - accessors
 + (CAVInterfaceAPI *)sharedAPI {

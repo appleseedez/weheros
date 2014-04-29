@@ -32,6 +32,7 @@
 #define kPeerLocalPort @"peerLocalPort"
 #define kPeerInterIP @"peerInterIP"
 #define kPeerInterPort @"peerInterPort"
+#define kPeerNATType @"peerNATType"
 // my
 #define kMyAccount @"myAccount"
 #define kMySessionID @"mySessionID"
